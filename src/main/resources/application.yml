@@ -1,0 +1,61 @@
+spring:
+  mvc:
+    view:
+      prefix: /views/
+      suffix: .jsp
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: false
+  #Encoding UTF-8
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+  #database
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://127.0.0.1:3306/test
+    username: root
+    password: root
+
+  #JPA
+  jpa:
+    #OpenEntityManagerInViewInterceptor를 등록하여 요청의 전체처리를 위해 JPA EntityManager 스레드에 바인딩
+    open-in-view: false
+    #실행 시 스키마 초기화
+    generate-ddl: false
+    #console에 JPA 실행 시 SQL log 유무
+    show-sql: true
+    hibernate:
+      format_sql: true
+#      ddl-auto: none
+      #create  : 기존테이블 삭제 후 다시 생성
+      #create-drop : 종료 시점에 테이블 DROP한다.
+      #update : 변경분만 반영
+      #validate :  엔티티와 테이블이 정상 매핑되었는지만 확인(운영 시 추천)
+      #none : ddl 옵션을 사용하지 않는다.
+
+
+
+#    hikari:
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      jdbc-url: jdbc:mysql://localhost:3306/demodb?serverTimezone=UTC&characterEncoding=UTF-8
+#      username: root
+#      password: root
+server:
+  servlet:
+    context-path: /
+  port: 8080
+logging:
+  level:
+    org:
+      hibernate:
+        sql: debug
+        type:
+          descriptor:
+            sql:
+              basicbinder: trace
