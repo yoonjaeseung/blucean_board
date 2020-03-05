@@ -12,13 +12,41 @@ public class UserAccountServiceImpl implements UserAccountService {
     private final UserAccountRepository userAccountRepository;
 
     @Autowired
-    public UserAccountServiceImpl(UserAccountRepository userAccountRepository){
+    public UserAccountServiceImpl(UserAccountRepository userAccountRepository) {
         this.userAccountRepository = userAccountRepository;
     }
 
+    //전체회원 조회
     @Override
-    public List<UserAccount> getAllUserAccount() {
+    public List<UserAccount> allUserAccount() {
         return userAccountRepository.findAll();
     }
+
+    //특정회원 조회(account_email)
+    @Override
+    public List<UserAccount> userAccountEmail(String accountEmail) {
+        return userAccountRepository.findByAccountEmail(accountEmail);
+    }
+
+    //특정회원 삭제
+    @Override
+    public void deleteUserAccount(Long id) {
+        userAccountRepository.deleteById(id);
+    }
+
+    /**
+     * update 관련 부분
+     */
+    @Override
+    public void updateUserAccount(UserAccount userAccount, Long id, String accountPassword) {
+        //id로 db find
+//        List<UserAccount> userAccount = userAccountRepository.findByAccountPassword(accountPassword);
+//        UserAccount userAccount =  new UserAccount();
+        userAccount.setId(id);
+        userAccount.setAccountPassword(accountPassword);
+        userAccountRepository.save(userAccount);
+
+    }
+
 }
 

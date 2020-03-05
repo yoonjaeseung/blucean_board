@@ -6,5 +6,12 @@ import java.util.List;
 
 public interface UserAccountService {
 
-    List<UserAccount> getAllUserAccount();
+    List<UserAccount> allUserAccount();
+
+    List<UserAccount> userAccountEmail(String accountEmail);
+
+    void updateUserAccount(UserAccount userAccount, Long id, String accountPassword);
+
+    void deleteUserAccount(Long id);
+
 }
