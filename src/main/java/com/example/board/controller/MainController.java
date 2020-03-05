@@ -55,7 +55,7 @@ public class MainController {
 
     @GetMapping("/login")
     public String Login(UserAccount userAccount, Model model){
-        return "userLogin";
+        return "login";
     }
 
 }

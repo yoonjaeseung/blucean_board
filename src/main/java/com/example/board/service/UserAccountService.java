@@ -7,8 +7,11 @@ import java.util.List;
 public interface UserAccountService {
 
     List<UserAccount> allUserAccount();
-    List<UserAccount> userAccountEmail(String accountEmail);
-    void deleteUserAccount(Long id);
 
+    List<UserAccount> userAccountEmail(String accountEmail);
+
+    void updateUserAccount(UserAccount userAccount, Long id, String accountPassword);
+
+    void deleteUserAccount(Long id);
 
 }

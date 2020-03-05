@@ -1,16 +1,18 @@
 package com.example.board.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
+/**
+ * Spring Data JPA 방식
+ */
 @Entity
 @Table(name = "tb_user_account", schema = "test")
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
+@AllArgsConstructor // 모든필드를 파라미터로 입력받은 생성자
+@NoArgsConstructor  // 파라미터가 없는 생성자 => 기본생성자
 public class UserAccount {
 
     @Id
@@ -19,7 +21,7 @@ public class UserAccount {
     @Column(name = "account_email", nullable = false)
     private String accountEmail;
 
-    @Column(name = "account_password", nullable = true)
+    @Column(name = "account_password", nullable = false)
     private String accountPassword;
 
     @Column(name = "birth_day", nullable = true)
@@ -59,6 +61,5 @@ public class UserAccount {
 
     @Column(name = "update_host", nullable = false)
     private String updateHost;
-
 
 }

@@ -14,6 +14,12 @@
         location.href = "/userDelete?id="+id;
         alert("삭제되었습니다")
     }
+
+    //게정 수정
+    function btn_update(id) {
+        location.href = "/userUpdate?id="+id;
+        alert("수정 페이지로 이동합니다")
+    }
 </script>
 <style>
     .wrap {
@@ -26,7 +32,7 @@
 
     }
 </style>
-<title>Board View</title>
+<title>회원찾기</title>
 
 </head>
 <body class="wrap">
@@ -38,7 +44,7 @@
             </tr>
             <tr>
                 <td><input type="text" name="accountEmail" placeholder="회원이메일" style="width: 150px;"></td>
-                <td><input id="select" type="submit" value="조회" style="width: 100px;"></td>
+                <td><input type="submit" value="조회" style="width: 100px;"></td>
                 <td><input type="reset" value="초기화" style="width: 100px;"></td>
             </tr>
         </table>
@@ -70,7 +76,7 @@
         <td></td>
         </thead>
         <tbody style="background-color: aliceblue">
-        <c:forEach var="entity" items="${userAccountEmail}" varStatus="status">
+        <c:forEach var="entity" items="${userAccountEmail}">
             <tr>
                 <td>${entity.id}</td>
                 <td>${entity.accountEmail}</td>
@@ -88,7 +94,7 @@
                 <td>${entity.updateDatetime}</td>
                 <td>${entity.updateHost}</td>
                 <td style="alignment: center" >
-                    <button>수정</button>
+                    <button onclick="btn_update(${entity.id})">수정</button>
                     <button onclick="btn_delete(${entity.id})">삭제</button>
                 </td>
             </tr>

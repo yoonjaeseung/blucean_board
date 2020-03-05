@@ -17,7 +17,7 @@
     }
 </style>
 <head>
-    <title>User List</title>
+    <title>회원목록</title>
 </head>
 <body class="wrap">
 <div style="width:100%; height:200px; overflow:auto; overflow-x: auto">
