@@ -3,6 +3,7 @@ package com.example.board.domain.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Spring Data JPA 방식
@@ -43,23 +44,22 @@ public class UserAccount {
     private String userName;
 
     @Column(name = "first_practice_datetime", nullable = true)
-    private java.util.Date firstPracticeDatetime;
+    private Date firstPracticeDatetime;
 
     @Column(name = "last_practice_datetime", nullable = true)
-    private java.util.Date lastPracticeDatetime;
+    private Date lastPracticeDatetime;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_datetime", nullable = false)
-    private java.util.Date createDatetime;
+    private Date createDatetime;
 
     @Column(name = "create_host", nullable = false)
     private String createHost;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "update_datetime", nullable = false)
-    private java.util.Date updateDatetime;
+    private Date updateDatetime;
 
     @Column(name = "update_host", nullable = false)
     private String updateHost;
-
 }
