@@ -11,12 +11,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE>
 <html>
-<style>
-    .wrap {
-        margin: 30px 50px;
-    }
-</style>
 <head>
+    <style>
+        .wrap {
+            margin: 30px 50px;
+        }
+    </style>
     <title>회원목록</title>
 </head>
 <body class="wrap">

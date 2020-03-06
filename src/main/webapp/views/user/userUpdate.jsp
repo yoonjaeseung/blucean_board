@@ -8,23 +8,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
-<script>
-    //게정 수정
-    function btn_update() {
-        alert("변경되었습니다")
-    }
-</script>
-<style>
-    .wrap {
-        margin: 30px 50px;
-    }
+<head>
+    <script>
+        //게정 수정
+        function btn_update() {
+            alert("변경되었습니다")
+        }
+    </script>
+    <style>
+        .wrap {
+            margin: 30px 50px;
+        }
 
-    table {
-        font-family: "KoPubWorld돋움체 Light";
-        font-size: 10pt;
-    }
-</style>
-<title>회원정보 수정</title>
+        table {
+            font-family: "KoPubWorld돋움체 Light";
+            font-size: 10pt;
+        }
+    </style>
+    <title>회원정보 수정</title>
 </head>
 <body class="wrap">
 
@@ -32,7 +33,7 @@
     <fieldset style="width: 75%">
         <legend><h2>회원정보 수정</h2></legend>
         <form action="/userUpdate" method="post">
-            <input type="text" name="id" value="${param.id}">
+            <input type="hidden" name="id" value="${param.id}">
             <table border="0" cellpadding="1" cellspacing="10">
                 <tr>
                     <th><label for="accountPassword">변경할 패스워드</label></th>
@@ -45,7 +46,8 @@
                 <tr>
                     <td><input type="submit" value="확인" style="width: 100px" onclick="btn_update()"></td>
                     <td><input type="reset" value="초기화" style="width: 100px"></td>
-                    <td><input type="button" value="취소" onclick="{location.href = '/userView'}" style="width: 100px"></td>
+                    <td><input type="button" value="취소" onclick="{location.href = '/userView'}" style="width: 100px">
+                    </td>
                 </tr>
             </table>
         </form>

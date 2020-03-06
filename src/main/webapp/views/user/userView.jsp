@@ -8,36 +8,37 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
-<script type="text/javascript">
-    //계정 삭제
-    function btn_delete(id) {
-        location.href = "/userDelete?id="+id;
-        alert("삭제되었습니다")
-    }
+<head>
+    <script type="text/javascript">
+        //계정 삭제
+        function btn_delete(id) {
+            location.href = "/userDelete?id=" + id;
+            alert("삭제되었습니다")
+        }
 
-    //게정 수정
-    function btn_update(id) {
-        location.href = "/userUpdate?id="+id;
-        alert("수정 페이지로 이동합니다")
-    }
-</script>
-<style>
-    .wrap {
-        margin: 30px 50px;
-    }
+        //게정 수정
+        function btn_update(id) {
+            location.href = "/userUpdate?id=" + id;
+            alert("수정 페이지로 이동합니다")
+        }
+    </script>
+    <style>
+        .wrap {
+            margin: 30px 50px;
+        }
 
-    table {
-        font-family: "KoPubWorld돋움체 Light";
-        font-size: 10pt;
+        table {
+            font-family: "KoPubWorld돋움체 Light";
+            font-size: 10pt;
 
-    }
-</style>
-<title>회원찾기</title>
+        }
+    </style>
+    <title>회원찾기</title>
 
 </head>
 <body class="wrap">
 <div>
-    <form id="userAccount" action="/userView" method="post">
+    <form action="/userView" method="post">
         <table>
             <tr>
                 <td><h1>회원찾기</h1></td>
@@ -76,26 +77,49 @@
         <td></td>
         </thead>
         <tbody style="background-color: aliceblue">
-        <c:forEach var="entity" items="${userAccountEmail}">
+        <%--        <c:forEach var="entity" items="${userAccountEmail}">--%>
+        <%--            <tr>--%>
+        <%--                <td>${entity.id}</td>--%>
+        <%--                <td>${entity.accountEmail}</td>--%>
+        <%--                <td>${entity.accountPassword}</td>--%>
+        <%--                <td>${entity.birthday}</td>--%>
+        <%--                <td>${entity.sexCode}</td>--%>
+        <%--                <td>${entity.openScopeCode}</td>--%>
+        <%--                <td>${entity.countryCode}</td>--%>
+        <%--                <td>${entity.joinDivisionCode}</td>--%>
+        <%--                <td>${entity.userName}</td>--%>
+        <%--                <td>${entity.firstPracticeDatetime}</td>--%>
+        <%--                <td>${entity.lastPracticeDatetime}</td>--%>
+        <%--                <td>${entity.createDatetime}</td>--%>
+        <%--                <td>${entity.createHost}</td>--%>
+        <%--                <td>${entity.updateDatetime}</td>--%>
+        <%--                <td>${entity.updateHost}</td>--%>
+        <%--                <td style="alignment: center" >--%>
+        <%--                    <button onclick="btn_update(${entity.id})">수정</button>--%>
+        <%--                    <button onclick="btn_delete(${entity.id})">삭제</button>--%>
+        <%--                </td>--%>
+        <%--            </tr>--%>
+        <%--        </c:forEach>--%>
+        <c:forEach var="result" items="${userAccount}">
             <tr>
-                <td>${entity.id}</td>
-                <td>${entity.accountEmail}</td>
-                <td>${entity.accountPassword}</td>
-                <td>${entity.birthday}</td>
-                <td>${entity.sexCode}</td>
-                <td>${entity.openScopeCode}</td>
-                <td>${entity.countryCode}</td>
-                <td>${entity.joinDivisionCode}</td>
-                <td>${entity.userName}</td>
-                <td>${entity.firstPracticeDatetime}</td>
-                <td>${entity.lastPracticeDatetime}</td>
-                <td>${entity.createDatetime}</td>
-                <td>${entity.createHost}</td>
-                <td>${entity.updateDatetime}</td>
-                <td>${entity.updateHost}</td>
-                <td style="alignment: center" >
-                    <button onclick="btn_update(${entity.id})">수정</button>
-                    <button onclick="btn_delete(${entity.id})">삭제</button>
+                <td><c:out value="${result.id}"/></td>
+                <td><c:out value="${result.accountEmail}"/></td>
+                <td><c:out value="${result.accountPassword}"/></td>
+                <td><c:out value="${result.birthday}"/></td>
+                <td><c:out value="${result.sexCode}"/></td>
+                <td><c:out value="${result.openScopeCode}"/></td>
+                <td><c:out value="${result.countryCode}"/></td>
+                <td><c:out value="${result.joinDivisionCode}"/></td>
+                <td><c:out value="${result.userName}"/></td>
+                <td><c:out value="${result.firstPracticeDatetime}"/></td>
+                <td><c:out value="${result.lastPracticeDatetime}"/></td>
+                <td><c:out value="${result.createDatetime}"/></td>
+                <td><c:out value="${result.createHost}"/></td>
+                <td><c:out value="${result.updateDatetime}"/></td>
+                <td><c:out value="${result.updateHost}"/></td>
+                <td style="alignment: center">
+                    <button onclick="btn_update(${result.id})">수정</button>
+                    <button onclick="btn_delete(${result.id})">삭제</button>
                 </td>
             </tr>
         </c:forEach>
