@@ -78,7 +78,7 @@ public class UserController {
     @GetMapping("/userDelete")
     public String deleteUserAccount(Long id) throws Exception {
         userAccountService.deleteUserAccount(id);
-        log.info("===delete==={}", id);
+        log.info("===delete userAccount==={}", id);
         return "redirect:/userView";
     }
 

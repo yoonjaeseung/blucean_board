@@ -45,10 +45,10 @@ public class UserAccountServiceImpl implements UserAccountService {
     /**
      * firstPracticeDatetime, lastPracticeDatetime 는 현재 우리 프로젝트에서 중요하게 사용 하는 필드 입니다.
      * 현재 게시판 프로젝트에서는 필요 없을수 있겠지만, 필수로 알아둬야 업무에 도움이 될 겁니다.
-     *
+     * <p>
      * firstPracticeDatetime,lastPracticeDatetime,createDatetime,createHost,updateDatetime,updateHos 의 경우 내부에서
      * 사용 하는 필드 입니다. jsp에서 부터 넘어오지 않고, service 로직 내에서 적용 가능 합니다.
-     *
+     * <p>
      * Timestamp.valueOf(LocalDateTime.now()) 으로도 사용 할수 있지만, 현재 시간을 넣는 방법은 여러가지가 있으니
      * 사용 하기 편한 것으로 사용 하면 될것 같습니다.
      */
@@ -60,7 +60,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         userAccount.setId(id);
         userAccount.setAccountEmail(accountEmail);
         userAccount.setAccountPassword(accountPassword);
-        userAccount.setBirthday(birthDay);
+        userAccount.setBirthDay(birthDay);
         userAccount.setSexCode(sexCode);
         userAccount.setOpenScopeCode(openScopeCode);
         userAccount.setCountryCode(countryCode);
@@ -82,6 +82,8 @@ public class UserAccountServiceImpl implements UserAccountService {
         //id로 db find
         UserAccount updateUserAccountDB = userAccountRepository.findById(id).orElseGet(null);
         updateUserAccountDB.setAccountPassword(accountPassword);
+        updateUserAccountDB.setLastPracticeDatetime(new Date()); // 최근실행 했다고 가정
+        updateUserAccountDB.setUpdateDatetime(new Date()); // 가입 후 정보 수정일시
         userAccountRepository.save(updateUserAccountDB);
 
     }

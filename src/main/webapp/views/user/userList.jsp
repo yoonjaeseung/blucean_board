@@ -48,7 +48,7 @@
                 <td>${entity.id}</td>
                 <td>${entity.accountEmail}</td>
                 <td>${entity.accountPassword}</td>
-                <td>${entity.birthday}</td>
+                <td>${entity.birthDay}</td>
                 <td>${entity.sexCode}</td>
                 <td>${entity.openScopeCode}</td>
                 <td>${entity.countryCode}</td>

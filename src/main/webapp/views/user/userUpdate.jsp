@@ -37,7 +37,7 @@
             <table border="0" cellpadding="1" cellspacing="10">
                 <tr>
                     <th><label for="accountPassword">변경할 패스워드</label></th>
-                    <td><input type="password" id="accountPassword" name="accountPassword"></td>
+                    <td><input type="password" id="accountPassword" name="accountPassword" maxlength="16"></td>
                 </tr>
             </table>
 

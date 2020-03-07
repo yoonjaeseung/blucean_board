@@ -105,7 +105,7 @@
                 <td><c:out value="${result.id}"/></td>
                 <td><c:out value="${result.accountEmail}"/></td>
                 <td><c:out value="${result.accountPassword}"/></td>
-                <td><c:out value="${result.birthday}"/></td>
+                <td><c:out value="${result.birthDay}"/></td>
                 <td><c:out value="${result.sexCode}"/></td>
                 <td><c:out value="${result.openScopeCode}"/></td>
                 <td><c:out value="${result.countryCode}"/></td>

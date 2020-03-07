@@ -31,47 +31,47 @@ public class UserAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "account_email", nullable = false)
+    @Column(name = "accountEmail", nullable = false)
     private String accountEmail;
 
-    @Column(name = "account_password", nullable = false)
+    @Column(name = "accountPassword", nullable = false)
     private String accountPassword;
 
-    @Column(name = "birth_day", nullable = true)
-    private String birthday;
+    @Column(name = "birthDay", nullable = true)
+    private String birthDay;
 
-    @Column(name = "sex_code", nullable = true)
+    @Column(name = "sexCode", nullable = true)
     private String sexCode;
 
-    @Column(name = "open_scope_code", nullable = true)
+    @Column(name = "openScopeCode", nullable = true)
     private String openScopeCode;
 
-    @Column(name = "country_code", nullable = true)
+    @Column(name = "countryCode", nullable = true)
     private String countryCode;
 
-    @Column(name = "join_division_code", nullable = true)
+    @Column(name = "joinDivisionCode", nullable = true)
     private String joinDivisionCode;
 
-    @Column(name = "user_name", nullable = true)
+    @Column(name = "userName", nullable = true)
     private String userName;
 
-    @Column(name = "first_practice_datetime", nullable = true)
+    @Column(name = "firstPracticeDatetime", nullable = true)
     private Date firstPracticeDatetime;
 
-    @Column(name = "last_practice_datetime", nullable = true)
+    @Column(name = "lastPracticeDatetime", nullable = true)
     private Date lastPracticeDatetime;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "create_datetime", nullable = false)
+    @Column(name = "createDatetime", nullable = false)
     private Date createDatetime;
 
-    @Column(name = "create_host", nullable = false)
+    @Column(name = "createHost", nullable = false)
     private String createHost;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "update_datetime", nullable = false)
+    @Column(name = "updateDatetime", nullable = false)
     private Date updateDatetime;
 
-    @Column(name = "update_host", nullable = false)
+    @Column(name = "updateHost", nullable = false)
     private String updateHost;
 }
