@@ -1,11 +1,9 @@
 package com.example.board.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -21,57 +19,56 @@ import java.util.Date;
  */
 
 @Entity
-@Table(name = "tb_user_account" , schema = "test")
-@Getter
+@Table(name = "tb_user_account")
 @Setter
-@AllArgsConstructor // 모든필드를 파라미터로 입력받은 생성자
-@NoArgsConstructor  // 파라미터가 없는 생성자 => 기본생성자
-public class UserAccount {
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class UserAccount extends EmBaseEntity implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(name = "account_email", nullable = false)
+    @Column(name = "accountEmail", nullable = false, length = 80)
     private String accountEmail;
 
-    @Column(name = "account_password", nullable = false)
+    @Column(name = "accountPassword", length = 80)
     private String accountPassword;
 
-    @Column(name = "birth_day", nullable = true)
+    @Column(name = "birthday", length = 8)
     private String birthday;
 
-    @Column(name = "sex_code", nullable = true)
+    @Column(name = "sexCode", length = 1)
     private String sexCode;
 
-    @Column(name = "open_scope_code", nullable = true)
+    @Column(name = "openScopeCode", length = 1)
     private String openScopeCode;
 
-    @Column(name = "country_code", nullable = true)
+    @Column(name = "countryCode", length = 10)
     private String countryCode;
 
-    @Column(name = "join_division_code", nullable = true)
+    @Column(name = "joinDivisionCode", length = 2)
     private String joinDivisionCode;
 
-    @Column(name = "user_name", nullable = true)
+    @Column(name = "userName", length = 60)
     private String userName;
 
-    @Column(name = "first_practice_datetime", nullable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "firstPracticeDatetime")
     private Date firstPracticeDatetime;
 
-    @Column(name = "last_practice_datetime", nullable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "lastPracticeDatetime")
     private Date lastPracticeDatetime;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "create_datetime", nullable = false)
-    private Date createDatetime;
-
-    @Column(name = "create_host", nullable = false)
-    private String createHost;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "update_datetime", nullable = false)
-    private Date updateDatetime;
-
-    @Column(name = "update_host", nullable = false)
-    private String updateHost;
+    @Builder
+    public UserAccount(String accountEmail, String accountPassword, String birthday, String sexCode, String openScopeCode,
+                       String countryCode, String joinDivisionCode, String userName, Date firstPracticeDatetime, Date lastPracticeDatetime) {
+        this.accountEmail = accountEmail;
+        this.accountPassword = accountPassword;
+        this.birthday = birthday;
+        this.sexCode = sexCode;
+        this.openScopeCode = openScopeCode;
+        this.countryCode = countryCode;
+        this.joinDivisionCode = joinDivisionCode;
+        this.userName = userName;
+        this.firstPracticeDatetime = firstPracticeDatetime;
+        this.lastPracticeDatetime = lastPracticeDatetime;
+    }
 }

@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.Optional;
 /**
  * 회원 계정 Repository
+ *
+ *
+ * sue : @Repository 를 꼭 작성 해야 만 Repository를 확인 할 수 있나요?
  * */
 @Repository
 public interface UserAccountRepository extends JpaRepository<UserAccount, Long> {
