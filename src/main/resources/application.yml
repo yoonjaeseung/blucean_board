@@ -16,11 +16,11 @@ spring:
       force: false
 
   #database
-#  datasource:
-#    driver-class-name: org.mariadb.jdbc.Driver
-#    url: jdbc:mariadb://127.0.0.1:3306/test
-#    username: root
-#    password: root
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://127.0.0.1:3306/test
+    username: root
+    password: root
   #    hikari:
   #      driver-class-name: com.mysql.cj.jdbc.Driver
   #      jdbc-url: jdbc:mysql://localhost:3306/demodb?serverTimezone=UTC&characterEncoding=UTF-8
@@ -29,24 +29,17 @@ spring:
 
 
   #JPA
-#  jpa:
-#    #OpenEntityManagerInViewInterceptor를 등록하여 요청의 전체처리를 위해 JPA EntityManager 스레드에 바인딩
-#    open-in-view: false
-#    #실행 시 스키마 초기화
-#    generate-ddl: false
-#    properties:
-#      hibernate:
-#        show_sql: true #console에 JPA 실행 시 SQL log 유무
-#        format_sql: true #정리된 SQL문
-#        use_sql_comments: true #실행 쿼리문 주석보기
-
   jpa:
-    hibernate:
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-      ddl-auto: none
-    generate-ddl: false
+    #OpenEntityManagerInViewInterceptor를 등록하여 요청의 전체처리를 위해 JPA EntityManager 스레드에 바인딩
     open-in-view: false
+    #실행 시 스키마 초기화
+    generate-ddl: false
+    properties:
+      hibernate:
+        show_sql: true #console에 JPA 실행 시 SQL log 유무
+        format_sql: true #정리된 SQL문
+        use_sql_comments: true #실행 쿼리문 주석보기
+
 
 server:
   servlet:
