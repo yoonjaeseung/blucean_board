@@ -1,48 +1,41 @@
 package com.example.board.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.*;
-import java.sql.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.io.Serializable;
+import java.util.Date;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "tb_user", schema = "test")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(nullable = false)
+@Table(name = "tb_user")
+@Setter
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class User extends EmBaseEntity implements Serializable {
+
+    @Column(name = "accountId", nullable = false, length = 80)
     private Long accountId;
 
-    @Column(nullable = false)
+    @Column(name = "phoneNumberId", nullable = false)
     private Long phoneNumberId;
 
-    @Column(nullable = false)
+    @Column(name = "activeFlag", nullable = false, length = 1)
     private String activeFlag;
 
-    @Column(nullable = true)
+    @Column(name = "lastPracticeDatetime")
     private Date lastPracticeDatetime;
 
-    @Column(nullable = true)
+    @Column(name = "telecomName", length = 100)
     private String telecomName;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column
-    private java.util.Date createDatetime;
-
-    @Column(nullable = false)
-    private String createHost;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column
-    private java.util.Date updateDatetime;
-
-    @Column(nullable = false)
-    private String updateHost;
-
+    @Builder
+    public User(Long accountId, Long phoneNumberId, String activeFlag, Date lastPracticeDatetime, String telecomName) {
+        this.accountId = accountId;
+        this.phoneNumberId = phoneNumberId;
+        this.activeFlag = activeFlag;
+        this.lastPracticeDatetime = lastPracticeDatetime;
+        this.telecomName = telecomName;
+    }
 }

@@ -1,44 +1,33 @@
 package com.example.board.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.io.Serializable;
+import java.util.Date;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "tb_user_phone_number", schema = "test")
-public class UserPhone {
+@Table(name = "tb_user_phone_number")
+@Setter
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class UserPhone extends EmBaseEntity implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false)
+    @Column(name = "userPhoneNumber", nullable = false, length = 20)
     private String userPhoneNumber;
 
-    @Column(nullable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "firstPracticeDatetime")
     private Date firstPracticeDatetime;
 
-    @Column(nullable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "lastPracticeDatetime")
     private Date lastPracticeDatetime;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column
-    private java.util.Date createDatetime;
-
-    @Column(nullable = false)
-    private String createHost;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column
-    private java.util.Date updateDatetime;
-
-    @Column(nullable = false)
-    private String updateHost;
+    @Builder
+    public UserPhone(String userPhoneNumber, Date firstPracticeDatetime, Date lastPracticeDatetime) {
+        this.userPhoneNumber = userPhoneNumber;
+        this.firstPracticeDatetime = firstPracticeDatetime;
+        this.lastPracticeDatetime = lastPracticeDatetime;
+    }
 }

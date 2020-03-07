@@ -1,75 +1,76 @@
 package com.example.board.domain.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.io.Serializable;
+import java.util.Date;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "tb_sys_qna", schema = "test")
-public class SysQna {
+@Table(name = "tb_sys_qna")
+@Setter
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class SysQna extends EmBaseEntity implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    @Column(nullable = true)
+    @Column(name = "accountEmail", length = 80)
     private String accountEmail;
 
-    @Column(nullable = true)
+    @Column(name = "userPhoneNumber", length = 20)
     private String userPhoneNumber;
 
-    @Column(nullable = true)
+    @Column(name = "replyEmailAddress", length = 60)
     private String replyEmailAddress;
 
-    @Column(nullable = true)
+    @Column(name = "questionContent", length = 1800)
     private String questionContent;
 
-    @Column(nullable = false)
+    @Column(name = "relyFlag", nullable = false, length = 1)
     private String relyFlag;
 
-    @Column(nullable = true)
+    @Column(name = "questionTypeCode", length = 3)
     private String questionTypeCode;
 
-    @Column(nullable = true)
+    @Column(name = "replyContent", length = 4000)
     private String replyContent;
 
-    @Column(nullable = true)
+    @Column(name = "replyId", length = 10)
     private String replyId;
 
-    @Column(nullable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "replyDatetime")
     private Date replyDatetime;
 
-    @Column(nullable = false)
+    @Column(name = "replyEmailFlag", nullable = false, length = 1)
     private String replyEmailFlag;
 
-    @Column(nullable = true)
+    @Column(name = "replyEmailId", length = 10)
     private String replyEmailId;
 
-    @Column(nullable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "replyEmailDatetime")
     private Date replyEmailDatetime;
 
-    @Column(nullable = true)
+    @Column(name = "qnaTypeCode", length = 1)
     private String qnaTypeCode;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column
-    private java.util.Date createDatetime;
-
-    @Column(nullable = false)
-    private String createHost;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column
-    private java.util.Date updateDatetime;
-
-    @Column(nullable = false)
-    private String updateHost;
-
-
+    @Builder
+    public SysQna(String accountEmail, String userPhoneNumber, String replyEmailAddress,
+                  String questionContent, String questionTypeCode, String replyContent, String replyId, java.util.Date replyDatetime, String replyEmailFlag,
+                  String replyEmailId, java.util.Date replyEmailDatetime,
+                  String qnaTypeCode) {
+        this.accountEmail = accountEmail;
+        this.userPhoneNumber = userPhoneNumber;
+        this.replyEmailAddress = replyEmailAddress;
+        this.questionContent = questionContent;
+        this.questionTypeCode = questionTypeCode;
+        this.replyContent = replyContent;
+        this.replyId = replyId;
+        this.replyDatetime = replyDatetime;
+        this.replyEmailFlag = replyEmailFlag;
+        this.replyEmailId = replyEmailId;
+        this.replyEmailDatetime = replyEmailDatetime;
+        this.qnaTypeCode = qnaTypeCode;
+    }
 }
