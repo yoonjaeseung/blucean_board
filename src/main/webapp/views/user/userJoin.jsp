@@ -44,6 +44,9 @@
             height: 25px;
         }
     </style>
+    <script>
+        document.getElementById('create_datetime').valueAsDate = new Date();
+    </script>
 </head>
 
 <body class="wrap">
@@ -63,11 +66,11 @@
                 </tr>
                 <tr>
                     <th>생년월일</th>
-                    <td colspan="2"><input type="text" class="box" name="birthday" placeholder="주민번호 앞 6자리 입력"
+                    <td colspan="2"><input type="text" class="box" name="birthDay" placeholder="주민번호 앞 6자리 입력"
                                            maxlength="6"></td>
                 </tr>
                 <tr>
-                    <th>성별</th>
+                    <th>성&nbsp;&nbsp;별</th>
                     <td><input type="radio" name="sexCode" value="F">여자</td>
                     <td><input type="radio" name="sexCode" value="M">남자</td>
                 </tr>
@@ -79,13 +82,13 @@
 
                 </tr>
                 <tr>
-                    <th>국가코드</th>
+                    <th>국&nbsp;&nbsp;가</th>
                     <td><input type="radio" name="countryCode" value="82">한국</td>
                     <td><input type="radio" name="countryCode" value="86">중국</td>
                     <td><input type="radio" name="countryCode" value="44">영국</td>
                 </tr>
                 <tr>
-                    <th>가입구분코드</th>
+                    <th>가입구분</th>
                     <td><input type="radio" name="joinDivisionCode" value="F">Facebook</td>
                     <td><input type="radio" name="joinDivisionCode" value="G">Google</td>
                     <td><input type="radio" name="joinDivisionCode" value="E">Email</td>
@@ -95,24 +98,24 @@
                     <td colspan="2"><input type="text" class="box" name="userName"></td>
                 </tr>
                 <tr>
-                    <th>최초실행일시</th>
-                    <td colspan="2"><input type="date" class="box" name="firstPracticeDatetime"></td>
+<%--                    <th>최초실행일시</th>--%>
+<%--                    <td colspan="2"><input type="hidden" class="box" name="firstPracticeDatetime"></td>--%>
                 </tr>
                 <tr>
-                    <th>최근실행일시</th>
-                    <td colspan="2"><input type="date" class="box" name="lastPracticeDatetime"></td>
+<%--                    <th>최근실행일시</th>--%>
+<%--                    <td colspan="2"><input type="hidden" class="box" name="lastPracticeDatetime"></td>--%>
                 </tr>
                 <tr>
-                    <th>생성일시<span>&nbsp;*</span></th>
-                    <td colspan="2"><input type="date" class="box" name="createDatetime"></td>
+<%--                    <th>생성일시<span>&nbsp;*</span></th>--%>
+<%--                    <td colspan="2"><input type="hidden" class="box" id="create_datetime" name="createDatetime"></td>--%>
                 </tr>
                 <tr>
                     <th>생성ID<span>&nbsp;*</span></th>
-                    <td colspan="2"><input type="text" class="box" name="createhost"></td>
+                    <td colspan="2"><input type="text" class="box" name="createHost"></td>
                 </tr>
                 <tr>
-                    <th>수정일시<span>&nbsp;*</span></th>
-                    <td colspan="2"><input type="date" class="box" name="updateDatetime"></td>
+<%--                    <th>수정일시<span>&nbsp;*</span></th>--%>
+<%--                    <td colspan="2"><input type="hidden" class="box" name="updateDatetime"></td>--%>
                 </tr>
                 <tr>
                     <th>수정ID<span>&nbsp;*</span></th>

@@ -1,13 +1,17 @@
 package com.example.board.domain.entity;
 
 import lombok.*;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
  * Spring Data JPA 방식
  */
+
+
 @Entity
 @Table(name = "tb_user_account", schema = "test")
 @Getter
