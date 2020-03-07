@@ -5,15 +5,15 @@ spring:
       suffix: .jsp
   devtools:
     livereload:
-      enabled: true
+      enabled: on
     restart:
       enabled: false
   #Encoding UTF-8
   http:
     encoding:
       charset: UTF-8
-      enabled: true
-      force: true
+      enabled: on
+      force: false
 
   #database
   datasource:

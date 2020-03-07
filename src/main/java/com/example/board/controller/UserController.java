@@ -1,18 +1,17 @@
 package com.example.board.controller;
 
-import com.example.board.domain.entity.User;
 import com.example.board.domain.entity.UserAccount;
-import com.example.board.domain.entity.UserTest;
-import com.example.board.domain.repository.UserAccountRepository;
 import com.example.board.service.UserAccountService;
 import com.example.board.service.UserService;
-import com.example.board.service.UserTestService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -20,26 +19,24 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    private final UserService userService;
     private final UserAccountService userAccountService;
-    private final UserTestService userTestService;
 
     @Autowired
-    public UserController(UserService userService, UserAccountService userAccountService, UserTestService userTestService) {
-        this.userService = userService;
+    public UserController(UserAccountService userAccountService) {
         this.userAccountService = userAccountService;
-        this.userTestService = userTestService;
     }
 
+
+    // 모든 회원 정보 가져오기
     @GetMapping("/userList")
     public String allUserAccountList(Model model) {
         List<UserAccount> allUserAccount = userAccountService.allUserAccount();
-
         model.addAttribute("allUserAccount", allUserAccount);
-
         return "user/userList";
     }
 
+
+    // 회원 찾기
     @GetMapping("/userView")
     public String userAccountEmailForm() {
         return "user/userView";
@@ -53,19 +50,8 @@ public class UserController {
         return "user/userView";
     }
 
-    //userTest 계정 생성
-//    @GetMapping("/userJoinForm")
-//    public String JoinUserAccount() {
-//        return "user/userJoinForm";
-//    }
-//
-//    @PostMapping("/userJoinForm")
-//    public String JoinUserAccount(UserTest userTest, Model model) {
-//        List<UserTest> joinUser = userTestService.joinUserAccount(userTest);
-//
-//        model.addAttribute(joinUser);
-//        return "user/userJoinSuccess";
-//    }
+
+    // 회원 가입
     @GetMapping("/userJoin")
     public String createUserAccountForm() {
         return "user/userJoin";
@@ -73,14 +59,16 @@ public class UserController {
 
     @PostMapping("/userJoin")
     public String createUserAccount(Long id, String accountEmail, String accountPassword, String birthDay, String sexCode, String openScopeCode,
-                                    String countryCode, String joinDivisionCode, String userName, Date firstPracticeDatetime, Date lastPracticeDatetime, Date createDatetime,
-                                    String createHost, Date updateDatetime, String updateHost) {
+                                    String countryCode, String joinDivisionCode, String userName, Date firstPracticeDatetime, Date lastPracticeDatetime, Timestamp createDatetime, String createHost,
+                                    Timestamp updateDatetime, String updateHost) {
         userAccountService.createUserAccount(id, accountEmail, accountPassword, birthDay, sexCode, openScopeCode, countryCode, joinDivisionCode, userName, firstPracticeDatetime,
                 lastPracticeDatetime, createDatetime, createHost, updateDatetime, updateHost);
+
         return "user/userJoinSuccess";
     }
 
 
+    // 특정 회원 암호 수정
     @GetMapping("/userUpdate")
     public String updateUserAccountForm() {
         return "user/userUpdate";
@@ -94,6 +82,8 @@ public class UserController {
 
     }
 
+
+    // 회원 삭제
     @GetMapping("/userDelete")
     public String deleteUserAccount(Long id) throws Exception {
         userAccountService.deleteUserAccount(id);

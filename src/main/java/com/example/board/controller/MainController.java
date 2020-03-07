@@ -18,45 +18,41 @@ import java.util.Locale;
 
 @Slf4j
 @Controller
-//@RestController
 public class MainController {
     private static final Logger logger = LoggerFactory.getLogger(MainController.class);
     private JdbcTemplate jdbcTemplate;
-    private final UserAccountService userAccountService;
 
-    @Autowired
-    public MainController(UserAccountService userAccountService){
-        this.userAccountService = userAccountService;
-    }
 
+    // 메인 페이지
     @GetMapping("/")
     public String main(Locale locale, Model model) {
         logger.info("The client locale is {}", locale);
         Date date = new Date();
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
         String formattedDate = dateFormat.format(date);
-
         model.addAttribute("serverTime", formattedDate);
         return "main";
     }
 
+    // 로그인 페이지
+    @GetMapping("/login")
+    public String LoginForm() {
+        return "login";
+    }
 
+
+    //DB Test
     @Autowired
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
+    //DB Test
     @GetMapping("/mariaTest")
     public List<String> tbUserAccount() {
         return jdbcTemplate.queryForList("select accountEmail from test.tb_user_account order by id", String.class);
     }
 
-    @GetMapping("/login")
-    public String Login(UserAccount userAccount, Model model){
-        return "login";
-    }
 
 }
 
