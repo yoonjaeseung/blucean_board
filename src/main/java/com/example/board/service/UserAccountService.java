@@ -19,8 +19,7 @@ public interface UserAccountService {
 
     // 회원 가입
     void createUserAccount(Long id, String accountEmail, String accountPassword, String birthDay, String sexCode, String openScopeCode,
-                           String countryCode, String joinDivisionCode, String userName, Date firstPracticeDatetime, Date lastPracticeDatetime, Timestamp createDatetime,
-                           String createHost, Timestamp updateDatetime, String updateHost);
+                           String countryCode, String joinDivisionCode, String userName);
 
     // 특정 회원 암호 수정
     // 회원의 id(일련번호)를 받아와 암호 수정

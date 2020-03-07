@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * 회원 계정 Service Implement
- *
+ * <p>
  * 회원 계정의 CRUD 기능
  */
 @Service
@@ -41,11 +41,21 @@ public class UserAccountServiceImpl implements UserAccountService {
     // firstPracticeDatetime(최조실행일시), lastPracticeDatetime(최근실행일시) 의 필요성을 잘 모르겠습니다.
     // 현재 DDL로는 값을 jsp에서 값을 직접 입력해서 넣어줘야 합니다.
     // createDatetime, updateDatetime은 jsp에서 값을 넣지 않아도 자동으로 계정 생성 시 날짜가 입력되게 성공했습니다.
+
+    /**
+     * firstPracticeDatetime, lastPracticeDatetime 는 현재 우리 프로젝트에서 중요하게 사용 하는 필드 입니다.
+     * 현재 게시판 프로젝트에서는 필요 없을수 있겠지만, 필수로 알아둬야 업무에 도움이 될 겁니다.
+     *
+     * firstPracticeDatetime,lastPracticeDatetime,createDatetime,createHost,updateDatetime,updateHos 의 경우 내부에서
+     * 사용 하는 필드 입니다. jsp에서 부터 넘어오지 않고, service 로직 내에서 적용 가능 합니다.
+     *
+     * Timestamp.valueOf(LocalDateTime.now()) 으로도 사용 할수 있지만, 현재 시간을 넣는 방법은 여러가지가 있으니
+     * 사용 하기 편한 것으로 사용 하면 될것 같습니다.
+     */
     @Override
     public void createUserAccount(Long id, String accountEmail, String accountPassword, String birthDay,
                                   String sexCode, String openScopeCode, String countryCode, String joinDivisionCode,
-                                  String userName, Date firstPracticeDatetime, Date lastPracticeDatetime, Timestamp createDatetime,
-                                  String createHost, Timestamp updateDatetime, String updateHost) {
+                                  String userName) {
         UserAccount userAccount = new UserAccount();
         userAccount.setId(id);
         userAccount.setAccountEmail(accountEmail);
@@ -56,12 +66,12 @@ public class UserAccountServiceImpl implements UserAccountService {
         userAccount.setCountryCode(countryCode);
         userAccount.setJoinDivisionCode(joinDivisionCode);
         userAccount.setUserName(userName);
-        userAccount.setFirstPracticeDatetime(firstPracticeDatetime);
-        userAccount.setLastPracticeDatetime(lastPracticeDatetime);
+        userAccount.setFirstPracticeDatetime(new Date());
+        userAccount.setLastPracticeDatetime(new Date());
         userAccount.setCreateDatetime(Timestamp.valueOf(LocalDateTime.now()));
-        userAccount.setCreateHost(createHost);
+        userAccount.setCreateHost("yoonjs");
         userAccount.setUpdateDatetime(Timestamp.valueOf(LocalDateTime.now()));
-        userAccount.setUpdateHost(updateHost);
+        userAccount.setUpdateHost("yoonjs");
         userAccountRepository.save(userAccount);
     }
 

@@ -97,30 +97,30 @@
                     <th>사용자명</th>
                     <td colspan="2"><input type="text" class="box" name="userName"></td>
                 </tr>
-                <tr>
-<%--                    <th>최초실행일시</th>--%>
-<%--                    <td colspan="2"><input type="hidden" class="box" name="firstPracticeDatetime"></td>--%>
-                </tr>
-                <tr>
-<%--                    <th>최근실행일시</th>--%>
-<%--                    <td colspan="2"><input type="hidden" class="box" name="lastPracticeDatetime"></td>--%>
-                </tr>
-                <tr>
-<%--                    <th>생성일시<span>&nbsp;*</span></th>--%>
-<%--                    <td colspan="2"><input type="hidden" class="box" id="create_datetime" name="createDatetime"></td>--%>
-                </tr>
-                <tr>
-                    <th>생성ID<span>&nbsp;*</span></th>
-                    <td colspan="2"><input type="text" class="box" name="createHost"></td>
-                </tr>
-                <tr>
-<%--                    <th>수정일시<span>&nbsp;*</span></th>--%>
-<%--                    <td colspan="2"><input type="hidden" class="box" name="updateDatetime"></td>--%>
-                </tr>
-                <tr>
-                    <th>수정ID<span>&nbsp;*</span></th>
-                    <td colspan="2"><input type="text" class="box" name="updateHost"></td>
-                </tr>
+<%--                <tr>--%>
+<%--&lt;%&ndash;                    <th>최초실행일시</th>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                    <td colspan="2"><input type="hidden" class="box" name="firstPracticeDatetime"></td>&ndash;%&gt;--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--&lt;%&ndash;                    <th>최근실행일시</th>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                    <td colspan="2"><input type="hidden" class="box" name="lastPracticeDatetime"></td>&ndash;%&gt;--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--&lt;%&ndash;                    <th>생성일시<span>&nbsp;*</span></th>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                    <td colspan="2"><input type="hidden" class="box" id="create_datetime" name="createDatetime"></td>&ndash;%&gt;--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <th>생성ID<span>&nbsp;*</span></th>--%>
+<%--                    <td colspan="2"><input type="text" class="box" name="createHost"></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--&lt;%&ndash;                    <th>수정일시<span>&nbsp;*</span></th>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                    <td colspan="2"><input type="hidden" class="box" name="updateDatetime"></td>&ndash;%&gt;--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <th>수정ID<span>&nbsp;*</span></th>--%>
+<%--                    <td colspan="2"><input type="text" class="box" name="updateHost"></td>--%>
+<%--                </tr>--%>
             </table>
             <div class="submit">
                 <input type="submit" value="가입하기">
