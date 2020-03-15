@@ -1,5 +1,6 @@
 package com.example.board.domain.entity;
 
+import com.example.board.common.entitiy.EmBaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,8 +27,8 @@ public class SysQna extends EmBaseEntity implements Serializable {
     @Column(name = "questionContent", length = 1800)
     private String questionContent;
 
-    @Column(name = "relyFlag", nullable = false, length = 1)
-    private String relyFlag;
+    @Column(name = "replyFlag", nullable = false, length = 1)
+    private String replyFlag;
 
     @Column(name = "questionTypeCode", length = 3)
     private String questionTypeCode;

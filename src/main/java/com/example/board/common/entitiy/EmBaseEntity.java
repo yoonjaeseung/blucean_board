@@ -1,5 +1,6 @@
-package com.example.board.domain.entity;
+package com.example.board.common.entitiy;
 
+import com.example.board.common.entitiy.EmBase;
 import lombok.Getter;
 
 import javax.persistence.*;

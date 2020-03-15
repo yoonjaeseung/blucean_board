@@ -1,13 +1,11 @@
 package com.example.board.service;
 
+import com.example.board.common.entitiy.EmBaseEntity;
 import com.example.board.domain.entity.UserAccount;
 import com.example.board.domain.repository.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,17 +14,33 @@ import java.util.List;
  * 회원 계정의 CRUD 기능
  */
 @Service
-public class UserAccountServiceImpl implements UserAccountService {
-    private final UserAccountRepository userAccountRepository;
+public class UserAccountServiceImpl extends EmBaseEntity implements UserAccountService {
+    private UserAccountRepository userAccountRepository; // DAO 인스턴스 초기화. 의존 객체 생성
 
+    //@Autowired를 사용하는 경우 아래와 같이 객체의 의존성을 가지는
+    //부분에 간단히 애노테이션을 사용하면 쉽게 의존성을 주입 받을 수 있음
+    //원래는 xml파일 또는 java class에 Bean설정을 만들어줘야 한다.
     @Autowired
+    // 생성자를 통해 UserServiceImpl이 의존하고 있는 UserAccountRepository 객체를 주입 받은 것
     public UserAccountServiceImpl(UserAccountRepository userAccountRepository) {
+        // 주입 받은 객체를 필드에 할당
         this.userAccountRepository = userAccountRepository;
     }
+//    @Autowired가 없을 경우
+//    Spring java config에 위 생성자에 있는 파라미터에 메서드를 호출해서 의존 객체를 주입
+//    @Bean
+//    public UserAccountRepository userAccountRepository(){
+//         return new UserAccountRepository();
+//    }
+//    @Bean
+//    public UserAccountServiceImpl userAccountServiceImpl(){
+//        return new UserAccountServiceImpl(userAccountRepository());
+//    }
 
     // 모든 회원 List
     @Override
     public List<UserAccount> allUserAccount() {
+
         return userAccountRepository.findAll();
     }
 
@@ -51,26 +65,21 @@ public class UserAccountServiceImpl implements UserAccountService {
      * 사용 하기 편한 것으로 사용 하면 될것 같습니다.
      */
     @Override
-    public void createUserAccount(Long id, String accountEmail, String accountPassword, String birthDay,
+    public void createUserAccount(String accountEmail, String accountPassword, String birthDay,
                                   String sexCode, String openScopeCode, String countryCode, String joinDivisionCode,
                                   String userName) {
-        UserAccount userAccount = new UserAccount();
-        userAccount.setId(id);
-        userAccount.setAccountEmail(accountEmail);
-        userAccount.setAccountPassword(accountPassword);
-        userAccount.setBirthday(birthDay);
-        userAccount.setSexCode(sexCode);
-        userAccount.setOpenScopeCode(openScopeCode);
-        userAccount.setCountryCode(countryCode);
-        userAccount.setJoinDivisionCode(joinDivisionCode);
-        userAccount.setUserName(userName);
-        userAccount.setFirstPracticeDatetime(new Date());
-        userAccount.setLastPracticeDatetime(new Date());
-        userAccount.setCreateDatetime(Timestamp.valueOf(LocalDateTime.now()));
-        userAccount.setCreateHost("yoonjs");
-        userAccount.setUpdateDatetime(Timestamp.valueOf(LocalDateTime.now()));
-        userAccount.setUpdateHost("yoonjs");
+        UserAccount userAccount = UserAccount.builder()
+                .accountEmail(accountEmail)
+                .accountPassword(accountPassword)
+                .birthday(birthDay)
+                .sexCode(sexCode)
+                .openScopeCode(openScopeCode)
+                .countryCode(countryCode)
+                .joinDivisionCode(joinDivisionCode)
+                .userName(userName)
+                .build();
         userAccountRepository.save(userAccount);
+
     }
 
     // 특정 회원 암호 수정

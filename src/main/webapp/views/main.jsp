@@ -29,6 +29,10 @@
             <li><h3><a href="/userView">회원 찾기</a></h3></li>
             <li><h3><a href="/userJoin">회원 가입</a></h3></li>
         </ul>
+        <ul>
+            <li><h3><a href="/board/boardList">QnA 게시판</a></h3></li>
+            <li><h3><a href="/board/boardWrite">QnA 글쓰기</a></h3></li>
+        </ul>
     </fieldset>
 </div>
 

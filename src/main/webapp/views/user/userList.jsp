@@ -20,9 +20,9 @@
     <title>회원목록</title>
 </head>
 <body class="wrap">
-<div style="width:100%; height:200px; overflow:auto; overflow-x: auto">
+<div>
     <h1>전체회원 목록</h1>
-    <table width="100%" border="0" cellspacing="1" cellpadding="0">
+    <table width="100%" border="0" cellspacing="1" cellpadding="0" style="overflow:auto; overflow-x: auto">
         <thead style="background-color: gainsboro">
         <th>NO</th>
         <th>계정이메일</th>

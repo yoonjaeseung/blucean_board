@@ -14,10 +14,8 @@ import java.util.List;
 
 @Slf4j
 @Controller
-public class UserController {
-
+public class UserController{
     private final UserAccountService userAccountService;
-
     @Autowired
     public UserController(UserAccountService userAccountService) {
         this.userAccountService = userAccountService;
@@ -52,10 +50,10 @@ public class UserController {
     }
 
     @PostMapping("/userJoin")
-    public String createUserAccount(Long id, String accountEmail, String accountPassword, String birthDay, String sexCode, String openScopeCode,
+    public String createUserAccount(String accountEmail, String accountPassword, String birthDay, String sexCode, String openScopeCode,
                                     String countryCode, String joinDivisionCode, String userName) {
 
-        userAccountService.createUserAccount(id, accountEmail, accountPassword, birthDay, sexCode, openScopeCode, countryCode, joinDivisionCode, userName);
+        userAccountService.createUserAccount(accountEmail, accountPassword, birthDay, sexCode, openScopeCode, countryCode, joinDivisionCode, userName);
 
         return "user/userJoinSuccess";
     }
@@ -81,5 +79,4 @@ public class UserController {
         log.info("===delete==={}", id);
         return "redirect:/userView";
     }
-
 }

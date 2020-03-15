@@ -1,5 +1,6 @@
 package com.example.board.domain.entity;
 
+import com.example.board.common.entitiy.EmBaseEntity;
 import lombok.*;
 
 import javax.persistence.Column;

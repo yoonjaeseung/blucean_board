@@ -18,7 +18,7 @@ public interface UserAccountService {
     List<UserAccount> userAccountEmail(String accountEmail);
 
     // 회원 가입
-    void createUserAccount(Long id, String accountEmail, String accountPassword, String birthDay, String sexCode, String openScopeCode,
+    void createUserAccount(String accountEmail, String accountPassword, String birthDay, String sexCode, String openScopeCode,
                            String countryCode, String joinDivisionCode, String userName);
 
     // 특정 회원 암호 수정

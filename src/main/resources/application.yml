@@ -5,14 +5,14 @@ spring:
       suffix: .jsp
   devtools:
     livereload:
-      enabled: on
+      enabled: true
     restart:
       enabled: false
   #Encoding UTF-8
   http:
     encoding:
       charset: UTF-8
-      enabled: on
+      enabled: true
       force: false
 
   #database
@@ -39,6 +39,9 @@ spring:
         show_sql: true #console에 JPA 실행 시 SQL log 유무
         format_sql: true #정리된 SQL문
         use_sql_comments: true #실행 쿼리문 주석보기
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
 
 server:

@@ -1,5 +1,6 @@
 package com.example.board.domain.entity;
 
+import com.example.board.common.entitiy.EmBaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,7 +20,7 @@ import java.util.Date;
  */
 
 @Entity
-@Table(name = "tb_user_account")
+@Table(name = "tb_user_account", schema = "test")
 @Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
