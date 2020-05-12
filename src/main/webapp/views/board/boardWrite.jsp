@@ -11,61 +11,71 @@
     <title>게시판 글쓰기</title>
     <script src="${pageContext.request.contextPath}/js/jquery-1.10.1.js"></script>
     <script type="text/javascript">
-        function doWrite() {
-            var requestUrl = '/board/boardWrite';
-            var data = {};
-            data.accountEmail = $("#accountEmail").val(); //$()팩토리 함수
-            data.userPhoneNumber = $("#userPhoneNumber").val();
-            data.questionContent = $("#questionContent").val();
-            data = JSON.stringify(data);
-
+        // Create
+        function insert_btn() {
+            var requestUrl = '/boardInsert';
+            // var data = {
+            //     accountEmail: "qwe", userPhoneNumber:"01012341234", questionContent:"안녕 배열"
+            // }
+            var data = {}; // 객체
+            data.accountEmail = $("#insertAccountEmail").val(); // 객체의 속성 추가
+            data.userPhoneNumber = $("#insertUserPhoneNumber").val();
+            data.questionContent = $("#insertQuestionContent").val();
+            data = JSON.stringify(data); //자바스크립트 객체를 json 객체로 변환
+            console.log("Insert Request Data:", data);
             $.ajax({
-                type: "POST",
+                type: 'post',
                 url: requestUrl,
-                data: data,                // $("#form").serialize(), // form을 통째로 넘김
-                dataType: 'json',
+                data: data,
+                // dataType   : 'json',
                 contentType: 'application/json',
-                success: function (data) {
-                    //data에 object 형식으로 데이터 담김
-                    if (data.code === 200) {
-                        console.log("data : " + data.accountEmail + data.userPhoneNumber + data.questionContent);
-                        alert("데이터 생성 완료");
-                        location.href = "/";
-
+                success: function (response) {
+                    console.log("Insert Response Data:", response);
+                    if (response.code === 200) {
+                        alert("생성을 성공하였습니다.")
+                        location.window.href = '/boardList';
                     }
-                    console.log(data)
-                }, error: function (xhr, e, data) {
-                    console.log("error" + data);
-                    alert("데이터 생성 실패");
+                },
+                error: function (xhr, e, response) {
+                    console.log("Insert Error:", xhr, e, response);
                 }
             });
         }
 
+        function clear_btn() {
+            $("#insertAccountEmail").val('');
+            $("#insertUserPhoneNumber").val('');
+            $("#insertQuestionContent").val('');
+            $(".updateQuestionContent").val('');
+        }
     </script>
 </head>
 <body>
-<div>
-    <h1>안녕하세요 json</h1>
+<%-- 글쓰기 --%>
+<fieldset style="margin-top: 50px">
+    <legend>회원 QnA 작성</legend>
     <table>
         <tr>
-            <td>작성자 이메일</td>
-            <td><input id="accountEmail" type="text" name="accountEmail" placeholder="Email 입력"></td>
+            <td>가입자계정/이메일</td>
+            <td><input type="text" id="insertAccountEmail" placeholder="Email input"></td>
         </tr>
         <tr>
-            <td>휴대전화 번호</td>
-            <td><input id="userPhoneNumber" type="text" name="userPhoneNumber"></td>
+            <td>전화번호</td>
+            <td><input type="text" id="insertUserPhoneNumber" placeholder="-없이 입력" maxlength="11"></td>
         </tr>
         <tr>
-            <td>글내용</td>
-            <td><textarea id="questionContent" name="questionContent" rows="10"></textarea></td>
+            <td>질문내용</td>
+            <td><textarea rows="10" id="insertQuestionContent" placeholder="내용을 입력하세요"></textarea></td>
         </tr>
-
         <tr>
             <td colspan="2">
-                <button onclick="javascript:doWrite()" style="float: right">전송</button>
+                <div style="float: right">
+                    <button onclick="javascript:insert_btn()">완료</button>
+                    <button onclick="javascript:clear_btn()">취소</button>
+                </div>
             </td>
         </tr>
     </table>
-</div>
+</fieldset>
 </body>
 </html>

@@ -4,6 +4,7 @@ import com.example.board.common.entitiy.EmBaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -12,8 +13,7 @@ import java.util.Date;
 @Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class SysQna extends EmBaseEntity implements Serializable {
-
+public class EmSysQna extends EmBaseEntity implements Serializable {
 
     @Column(name = "accountEmail", length = 80)
     private String accountEmail;
@@ -57,14 +57,15 @@ public class SysQna extends EmBaseEntity implements Serializable {
     private String qnaTypeCode;
 
     @Builder
-    public SysQna(String accountEmail, String userPhoneNumber, String replyEmailAddress,
-                  String questionContent, String questionTypeCode, String replyContent, String replyId, java.util.Date replyDatetime, String replyEmailFlag,
-                  String replyEmailId, java.util.Date replyEmailDatetime,
-                  String qnaTypeCode) {
+    public EmSysQna(String accountEmail, String userPhoneNumber, String replyEmailAddress,
+                    String questionContent, String replyFlag, String questionTypeCode, String replyContent, String replyId, Date replyDatetime, String replyEmailFlag,
+                    String replyEmailId, Date replyEmailDatetime,
+                    String qnaTypeCode) {
         this.accountEmail = accountEmail;
         this.userPhoneNumber = userPhoneNumber;
         this.replyEmailAddress = replyEmailAddress;
         this.questionContent = questionContent;
+        this.replyFlag = replyFlag;
         this.questionTypeCode = questionTypeCode;
         this.replyContent = replyContent;
         this.replyId = replyId;
@@ -74,4 +75,6 @@ public class SysQna extends EmBaseEntity implements Serializable {
         this.replyEmailDatetime = replyEmailDatetime;
         this.qnaTypeCode = qnaTypeCode;
     }
+
+
 }

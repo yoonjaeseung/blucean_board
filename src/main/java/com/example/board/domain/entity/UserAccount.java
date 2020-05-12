@@ -9,14 +9,6 @@ import java.util.Date;
 
 /**
  * Spring Data JPA 방식
- *
- * @Column(name = "account_email"
- * 컬럼을 이렇게 지정 하면 저장이 가능한가요??
- * <p>
- * ddl 에 컬럼 명이 "account_email" 이렇게 생성 되어 있나요??
- * 저는 아래와 같은 에러가 나는 군요.
- * JdbcSQLSyntaxErrorException: Column "ACCOUNT_EMAIL" not found; SQL statement:
- * insert into tb_user_account (id, account_email, account_password, birth_day, country_code, create_datetime, create_host, first_practice_datetime, join_division_code, last_practice_datetime, open_scope_code, sex_code, update_datetime, update_host, user_name) values (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
  */
 
 @Entity

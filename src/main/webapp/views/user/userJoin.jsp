@@ -44,9 +44,7 @@
             height: 25px;
         }
     </style>
-    <script>
-        document.getElementById('create_datetime').valueAsDate = new Date();
-    </script>
+
 </head>
 
 <body class="wrap">
